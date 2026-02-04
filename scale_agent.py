@@ -42,10 +42,12 @@ def serial_reader():
                     latest_weight = float(match.group(1))
                     print("Weight:", latest_weight)
                 else:
+                    latest_weight = 0.0
                     print("No match found in line:", text)
 
         except Exception as e:
             serial_connected = False
+            latest_weight = 0.0
             print("Serial error:", e)
             time.sleep(2)   # retry
 
@@ -54,8 +56,7 @@ def serial_reader():
 @app.route("/read-weight")
 def read_weight():
     return jsonify({
-        # "weight": latest_weight,
-        "weight": 10,
+        "weight": latest_weight,        
         "connected": serial_connected
     })
 

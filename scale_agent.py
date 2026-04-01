@@ -8,7 +8,7 @@ import time
 app = Flask(__name__)
 CORS(app)
 
-PORT = "COM8"
+PORT = "COM1"
 BAUDRATE = 9600
 
 latest_weight = 0.0
